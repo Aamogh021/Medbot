@@ -35,17 +35,6 @@ vector_store = SupabaseVectorStore(
     query_name="match_documents",
 )
 
-# Patch match_args so that the RPC call includes the params the SQL function expects:
-#   match_documents(query_embedding, match_count, match_threshold)
-_original_match_args = vector_store.match_args
-
-def _patched_match_args(query, filter=None):
-    ret = _original_match_args(query, filter)
-    ret.setdefault("match_count", 10)
-    ret.setdefault("match_threshold", 0.0)
-    return ret
-
-vector_store.match_args = _patched_match_args
 
 # 'k': 3 means we want it to fetch the 3 most relevant chunks of text
 retriever = vector_store.as_retriever(search_kwargs={"k": 3})
