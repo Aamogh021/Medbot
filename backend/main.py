@@ -120,6 +120,20 @@ async def serve_frontend():
     return FileResponse(os.path.join(FRONTEND_DIR, "index.html"))
 
 
+@app.get("/health")
+async def health_check():
+    """Check which env vars are set (without revealing values)."""
+    return {
+        "status": "ok",
+        "env_vars": {
+            "SUPABASE_URL": bool(os.environ.get("SUPABASE_URL")),
+            "SUPABASE_SERVICE_KEY": bool(os.environ.get("SUPABASE_SERVICE_KEY")),
+            "HF_API_KEY": bool(os.environ.get("HF_API_KEY")),
+            "GROQ_API_KEY": bool(os.environ.get("GROQ_API_KEY")),
+        }
+    }
+
+
 @app.post("/chat")
 async def chat(request: ChatRequest):
     try:
