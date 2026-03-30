@@ -53,7 +53,7 @@ async function sendMessage() {
     const typingEl = showTypingIndicator();
 
     try {
-        const res = await fetch('/chat', {
+        const res = await fetch('https://medbot-5qkw.onrender.com/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ message: text })
