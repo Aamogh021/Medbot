@@ -126,7 +126,11 @@ async def chat(request: ChatRequest):
         response = qa_chain.invoke(request.message)
         return {"response": response}
     except Exception as e:
-        return {"response": f"Sorry, an error occurred: {str(e)}"}
+        import traceback
+        error_detail = f"{type(e).__name__}: {str(e)}"
+        print(f"CHAT ERROR: {error_detail}")
+        traceback.print_exc()
+        return {"response": f"Sorry, an error occurred: {error_detail}"}
 
 
 if __name__ == "__main__":
