@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 from supabase.client import Client, create_client
-from langchain_huggingface import HuggingFaceInferenceAPIEmbeddings
+from langchain_huggingface import HuggingFaceEndpointEmbeddings
 from langchain_community.vectorstores import SupabaseVectorStore
 from langchain_groq import ChatGroq
 from langchain_core.prompts import PromptTemplate
@@ -22,9 +22,9 @@ supabase_key = os.environ.get("SUPABASE_SERVICE_KEY")
 supabase: Client = create_client(supabase_url, supabase_key)
 
 # 2. Setup the exact same Embeddings used in ingest.py
-embeddings = HuggingFaceInferenceAPIEmbeddings(
-    api_key=os.environ.get("HF_API_KEY"),
-    model_name="sentence-transformers/all-MiniLM-L6-v2"
+embeddings = HuggingFaceEndpointEmbeddings(
+    huggingfacehub_api_token=os.environ.get("HF_API_KEY"),
+    model="sentence-transformers/all-MiniLM-L6-v2"
 )
 
 # 3. Connect to our Vector Store and set it up to search
