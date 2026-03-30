@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedBot AI – Medical Assistant</title>
+    <meta name="description"
+        content="AI-powered medical chatbot assistant for quick health-related questions and information.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/style.css?v=3">
+    <link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Ambient background blobs -->
+        <div class="bg-blob blob-1"></div>
+        <div class="bg-blob blob-2"></div>
+        <div class="bg-blob blob-3"></div>
+
+        <!-- Main chat card -->
+        <div class="chat-card">
+            <!-- Header -->
+            <header class="chat-header">
+                <div class="header-left">
+                    <div class="logo-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                        </svg>
+                    </div>
+                    <div class="header-text">
+                        <h1>MedBot AI</h1>
+                        <span class="status-badge" id="statusBadge">
+                            <span class="status-dot"></span>
+                            Online
+                        </span>
+                    </div>
+                </div>
+                <button class="clear-btn" id="clearBtn" title="Clear chat">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="3 6 5 6 21 6"></polyline>
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    </svg>
+                </button>
+            </header>
+
+            <!-- Messages area -->
+            <main class="chat-messages" id="chatMessages">
+                <!-- Welcome message -->
+                <div class="welcome-container" id="welcomeContainer">
+                    <div class="welcome-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                        </svg>
+                    </div>
+                    <h2>Hello! I'm MedBot AI</h2>
+                    <p>Your AI medical assistant. Ask me any health-related question and I'll do my best to help.</p>
+                    <div class="suggestion-chips">
+                        <button class="chip" data-query="What are common symptoms of the flu?">🤒 Flu symptoms</button>
+                        <button class="chip" data-query="How does aspirin work?">💊 How aspirin works</button>
+                        <button class="chip" data-query="What is a healthy blood pressure range?">❤️ Blood
+                            pressure</button>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Input area -->
+            <footer class="chat-input-area">
+                <div class="input-wrapper">
+                    <input type="text" id="messageInput" placeholder="Ask a medical question..." autocomplete="off"
+                        autofocus>
+                    <button class="send-btn" id="sendBtn" title="Send message">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
+                </div>
+                <p class="disclaimer">MedBot AI can make mistakes. Always consult a healthcare professional.</p>
+            </footer>
+        </div>
+    </div>
+
+    <script src="static/script.js?v=3"></script>
+</body>
+
+</html>
